@@ -10,6 +10,7 @@ const helmet = require('helmet');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const morgan = require('morgan');
 
 var app = express();
 
