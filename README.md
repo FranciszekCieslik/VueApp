@@ -17,7 +17,7 @@ This web application is built using Vue.js for the front-end, Express.js for the
    - Define environment variables such as `PORT`, `MONGODB_URI`, etc.
 6. Start the development servers:
    - Front-end (Vue.js): `cd client && npm run serve`
-   - Back-end (Express.js): `cd server && npm run dev`
+   - Back-end (Express.js): `cd server && npm start`
 
 ## Technologies Used
 - Vue.js
