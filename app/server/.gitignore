@@ -1,5 +1,6 @@
 .env
 var
+package-lock.json
 
 # Node.js
 node_modules/
