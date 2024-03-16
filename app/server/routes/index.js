@@ -10,4 +10,14 @@ router.get('/', function(req, res, next) {
   return res.render('index', { user: req.user });
 });
 
+
+router.post('/test', (req,res)=>{
+  if(req.body.msg){
+  console.log("asked")
+}
+},
+function(req,res,next){
+return  res.send({message:`It is ${req.user}`});
+})
+
 module.exports = router;
