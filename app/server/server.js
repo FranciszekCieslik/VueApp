@@ -15,41 +15,41 @@ var SQLiteStore = require('connect-sqlite3')(session);
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
 
-var app = express();
+var server = express();
 
-app.locals.pluralize = require('pluralize');
+server.locals.pluralize = require('pluralize');
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+server.set('views', path.join(__dirname, 'views'));
+server.set('view engine', 'ejs');
 
-app.use(cors());
-app.use(helmet());
-app.use(bodyParser.json());
+server.use(cors());
+server.use(helmet());
+server.use(bodyParser.json());
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+server.use(logger('dev'));
+server.use(express.json());
+server.use(express.urlencoded({ extended: false }));
+server.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
+server.use(express.static(path.join(__dirname, 'public')));
+server.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
   store: new SQLiteStore({ db: 'sessions.db', dir: './var/db' })
 }));
-app.use(passport.authenticate('session'));
-app.use('/', indexRouter);
-app.use('/', authRouter);
+server.use(passport.authenticate('session'));
+server.use('/', indexRouter);
+server.use('/', authRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+server.use(function(req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+server.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -59,4 +59,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+module.exports = server;

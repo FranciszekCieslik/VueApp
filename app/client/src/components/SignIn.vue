@@ -3,26 +3,13 @@
   <section class="prompt">
 			<h3>LookLoom</h3>
 			<h1>Sign in</h1>
-			<a class="button google" @click="signin">Sign in with Google</a>
+			<a class="button google">Sign in with Google</a>
 		</section>	
 </div>
 </template>
 
 <script>
-import AuthService from '@/services/AuthService';
 
-export default{
-  data(){
-    return{
-      txt: 'working',
-    }
-  },
-  methods:{
-    async signin(){
-      await AuthService.signin()
-  }
-  }
-}
 </script>
 
 <style>
@@ -41,6 +28,7 @@ a.button {
 	display: block;
 	padding: 10px;
 	width: 100%;
+	border:2px solid ;
 	border-radius: 3px;
 	background: #000;
 	font-size: 14px;
@@ -54,7 +42,11 @@ a.google {
 	background: #4787ed;
 }
 a.button:hover{
-  background-color: #3a70c5;
+	background-color: #3a70c5;
+}
+
+a.button:active{
+	border-color: #ff6565;
 }
 
 h1 {
